@@ -15,6 +15,6 @@ exit
 
 # Tried on
 
-- NixOS 24.05, x32_64
-- macOS 12.7.6, x32_64
+- NixOS 24.05, x86_64
+- macOS 12.7.6, x86_64
  

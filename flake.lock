@@ -1,0 +1,180 @@
+{
+  "nodes": {
+    "FriedrichFroebel-ocrodjvu-git": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723479166,
+        "narHash": "sha256-hj3eiqkUKKoIsk1fB0yFEHJ6Fh42mMMbcbI/wmTkanw=",
+        "owner": "FriedrichFroebel",
+        "repo": "ocrodjvu",
+        "rev": "28ec37ac86cf7f36b9f4841bc91ce472ec46883d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FriedrichFroebel",
+        "repo": "ocrodjvu",
+        "type": "github"
+      }
+    },
+    "FriedrichFroebel-python-djvu-git": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721837687,
+        "narHash": "sha256-ekK9d5K8GSc0AW1HsmOnAHoB2dBsU1qYBb0GvrEs8rY=",
+        "owner": "FriedrichFroebel",
+        "repo": "python-djvulibre",
+        "rev": "c85477062752c5af13ca2847d26721b507d76659",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FriedrichFroebel",
+        "repo": "python-djvulibre",
+        "type": "github"
+      }
+    },
+    "djvu2pdf-git": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1529395198,
+        "narHash": "sha256-kU/hspH/asQg890IKAvf7nzMPVjaSePuwyQNjYZcswo=",
+        "owner": "vindvaki",
+        "repo": "djvu2pdf",
+        "rev": "798bc7e78d8408bc1ac2eb307442526b88d356ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vindvaki",
+        "repo": "djvu2pdf",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1726396940,
+        "narHash": "sha256-EpiSl9nSINTmIW6MG6CulGwNAa6sHrBt8gQdyHUXzR4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "76d7694a3f681b0b750c01783df5d2177ef39fe7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-python": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1722978926,
+        "narHash": "sha256-sqOOEaKJJSUFBzag/cGeeXV491TrrVFY3DFBs1w20V8=",
+        "owner": "cachix",
+        "repo": "nixpkgs-python",
+        "rev": "7c550bca7e6cf95898e32eb2173efe7ebb447460",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "nixpkgs-python",
+        "type": "github"
+      }
+    },
+    "nixpkgs24": {
+      "locked": {
+        "lastModified": 1726320982,
+        "narHash": "sha256-RuVXUwcYwaUeks6h3OLrEmg14z9aFXdWppTWPMTwdQw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8f7492cce28977fbf8bd12c72af08b1f6c7c3e49",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1719253556,
+        "narHash": "sha256-A/76RFUVxZ/7Y8+OMVL1Lc8LRhBxZ8ZE2bpMnvZ1VpY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fc07dc3bdf2956ddd64f24612ea7fc894933eb2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "FriedrichFroebel-ocrodjvu-git": "FriedrichFroebel-ocrodjvu-git",
+        "FriedrichFroebel-python-djvu-git": "FriedrichFroebel-python-djvu-git",
+        "djvu2pdf-git": "djvu2pdf-git",
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-python": "nixpkgs-python",
+        "nixpkgs24": "nixpkgs24"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

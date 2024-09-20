@@ -20,11 +20,9 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs";
     nixpkgs24.url = "github:NixOS/nixpkgs/nixos-24.05";
-
-    nixpkgs-python.url = "github:cachix/nixpkgs-python";
   };
 
-  outputs = { self, flake-utils, nixpkgs, nixpkgs24, djvu2pdf-git, nixpkgs-python, ... }@inputs:
+  outputs = { self, flake-utils, nixpkgs, nixpkgs24, djvu2pdf-git, ... }@inputs:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -78,7 +76,8 @@
             '';
             patchPhase = ''
               substituteInPlace djvu2pdf_toc_parser.py \
-                --replace "#!/usr/bin/python" "#!/usr/bin/env python" 
+                --replace "#!/usr/bin/python" "#!/usr/bin/env python3" \
+                --replace "print('\n'.join(toc_output))" "print(('\n'.join(toc_output)))"
             '';
             meta = {
               description = "generates compressed PDF from DjVu and tries to include text layers from the original DjVu file. I have no idea what happens in case there is no embedded text.";
@@ -90,15 +89,11 @@
         {
           formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
           packages = {
-            python_2_7_18 = nixpkgs-python.packages.${system}."2.7.18";
-
-            python-djvulibre = python-djvu;
             djvu2pdf = pkgs.symlinkJoin {
               name = "djvu2pdf";
               paths = [
                 djvu2pdf
                 ocrodjvu
-                self.packages.${system}.python_2_7_18
 
                 pkgs.libtiff
               ];

@@ -14,7 +14,7 @@
     };
 
     djvu2pdf-git = {
-      url = "github:vindvaki/djvu2pdf";
+      url = "github:letac/djvu2pdf";
       flake = false;
     };
 
@@ -74,14 +74,9 @@
               cp djvu2pdf $out/bin/djvu2pdf
               cp djvu2pdf_toc_parser.py $out/bin/djvu2pdf_toc_parser.py
             '';
-            patchPhase = ''
-              substituteInPlace djvu2pdf_toc_parser.py \
-                --replace "#!/usr/bin/python" "#!/usr/bin/env python3" \
-                --replace "print('\n'.join(toc_output))" "print(('\n'.join(toc_output)))"
-            '';
             meta = {
               description = "generates compressed PDF from DjVu and tries to include text layers from the original DjVu file. I have no idea what happens in case there is no embedded text.";
-              homepage = "https://github.com/vindvaki/djvu2pdf";
+              homepage = "https://github.com/letac/djvu2pdf";
               license = pkgs.lib.licenses.mit;
             };
           });

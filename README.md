@@ -1,5 +1,5 @@
 # Djvu2pdf-flake
-([vindvaki/djvu2pdf](https://github.com/vindvaki/djvu2pdf) one, not the `nixpkgs` one)
+([letac/djvu2pdf](https://github.com/letac/djvu2pdf) is fork of [vindvaki/djvu2pdf](https://github.com/vindvaki/djvu2pdf) one, not the `nixpkgs` one)
 
 Using [nix package manager](https://nixos.org/) to enable reproducible builds.
 

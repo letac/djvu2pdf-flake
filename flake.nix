@@ -18,16 +18,14 @@
       flake = false;
     };
 
-    nixpkgs.url = "github:NixOS/nixpkgs";
-    nixpkgs24.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   };
 
-  outputs = { self, flake-utils, nixpkgs, nixpkgs24, djvu2pdf-git, ... }@inputs:
+  outputs = { self, flake-utils, nixpkgs, djvu2pdf-git, ... }@inputs:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          pkgs24 = nixpkgs24.legacyPackages.${system};
 
           python-djvu = pkgs.python3Packages.buildPythonPackage {
             name = "python-djvulibre";
@@ -56,8 +54,10 @@
               license = pkgs.lib.licenses.gpl2;
             };
           };
-          pdfbeads = pkgs24.bundlerEnv {
+          ruby = pkgs.ruby_3_1;
+          pdfbeads = pkgs.bundlerEnv {
             name = "pdfbeads";
+            inherit ruby;
             gemdir = ./gems;
           };
           djvu2pdf = pkgs.stdenv.mkDerivation (finalAttrs: {
@@ -100,9 +100,9 @@
               self.packages.${system}.djvu2pdf
 
               pdfbeads
-              pkgs24.ruby
-              pkgs24.ruby.gems.nokogiri
-              pkgs24.jbig2enc
+              ruby
+              ruby.gems.nokogiri
+              pkgs.jbig2enc
             ];
           };
         }

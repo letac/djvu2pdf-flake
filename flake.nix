@@ -4,15 +4,6 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
 
-    FriedrichFroebel-ocrodjvu-git = {
-      url = "github:FriedrichFroebel/ocrodjvu";
-      flake = false;
-    };
-    FriedrichFroebel-python-djvu-git = {
-      url = "github:FriedrichFroebel/python-djvulibre";
-      flake = false;
-    };
-
     djvu2pdf-git = {
       url = "github:letac/djvu2pdf";
       flake = false;
@@ -27,33 +18,10 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
 
-          python-djvu = pkgs.python3Packages.buildPythonPackage {
-            name = "python-djvulibre";
-            src = inputs.FriedrichFroebel-python-djvu-git;
-            nativeBuildInputs = [
-              pkgs.pkg-config
-              pkgs.python3Packages.cython
-            ];
-            propagatedBuildInputs = [
-              pkgs.djvulibre
-            ];
-            meta = {
-              description = "python-djvulibre is a set of Python bindings for the DjVuLibre library, an open source implementation of DjVu.";
-              homepage = "https://github.com/FriedrichFroebel/python-djvulibre";
-              license = pkgs.lib.licenses.gpl2;
-            };
-          };
+          python-djvulibre = pkgs.callPackage ./pkgs/python-djvupython-djvulibre.nix { inherit pkgs; };
 
-          ocrodjvu = pkgs.python3Packages.buildPythonPackage {
-            name = "ocrodjvu";
-            src = inputs.FriedrichFroebel-ocrodjvu-git;
-            dependencies = [ pkgs.python3Packages.lxml python-djvu ];
-            meta = {
-              description = "ocrodjvu is a wrapper for OCR systems that allows you to perform OCR on DjVu files.";
-              homepage = "https://github.com/FriedrichFroebel/ocrodjvu";
-              license = pkgs.lib.licenses.gpl2;
-            };
-          };
+          ocrodjvu = pkgs.callPackage ./pkgs/ocrodjvu.nix { inherit pkgs python-djvulibre; };
+
           ruby = pkgs.ruby_3_1;
           pdfbeads = pkgs.bundlerEnv {
             name = "pdfbeads";

@@ -18,7 +18,7 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
 
-          python-djvulibre = pkgs.callPackage ./pkgs/python-djvupython-djvulibre.nix { inherit pkgs; };
+          python-djvulibre = pkgs.callPackage ./pkgs/python-djvulibre.nix { inherit pkgs; };
 
           ocrodjvu = pkgs.callPackage ./pkgs/ocrodjvu.nix { inherit pkgs python-djvulibre; };
 

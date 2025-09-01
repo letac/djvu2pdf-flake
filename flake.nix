@@ -22,14 +22,13 @@
 
           ocrodjvu = pkgs.callPackage ./pkgs/ocrodjvu.nix { inherit pkgs python-djvulibre; };
 
-          ruby = pkgs.ruby_3_1;
-          pdfbeads = pkgs.bundlerEnv {
-            name = "pdfbeads";
-            inherit ruby;
-            gemdir = ./gems;
-          };
-          djvu2pdf = pkgs.stdenv.mkDerivation (finalAttrs: {
-            pname = "djvu2pdf";
+          python3 = pkgs.python3; 
+
+          pdfbeads = pkgs.callPackage ./pkgs/pdfbears.nix { inherit pkgs; };
+
+
+          djvu2pdf-toc-parser = pkgs.stdenv.mkDerivation (finalAttrs: {
+            pname = "djvu2pdf-toc-parser";
             version = "";
 
             src = inputs.djvu2pdf-git;
@@ -39,7 +38,6 @@
             buildPhase = "";
             installPhase = ''
               mkdir -p $out/bin;
-              cp djvu2pdf $out/bin/djvu2pdf
               cp djvu2pdf_toc_parser.py $out/bin/djvu2pdf_toc_parser.py
             '';
             meta = {
@@ -48,26 +46,37 @@
               license = pkgs.lib.licenses.mit;
             };
           });
+          ruby = pkgs.ruby_3_1;
+          text = builtins.readFile "${djvu2pdf-git}/djvu2pdf";
+          djvu2pdf = pkgs.writeShellApplication {
+            name = "djvu2pdf";
+            runtimeInputs = [
+              djvu2pdf-toc-parser
+              python3
+              ocrodjvu
+
+              pkgs.djvulibre
+              pkgs.libtiff
+              pdfbeads
+              #pdfbeads.wrappedRuby
+              #  ruby
+            ];
+            checkPhase = [ ];
+            text = text;
+            meta = { platforms = pkgs.lib.platforms.linux; };
+          };
         in
         {
           formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
           packages = {
-            djvu2pdf = pkgs.symlinkJoin {
-              name = "djvu2pdf";
-              paths = [
-                djvu2pdf
-                ocrodjvu
-
-                pkgs.libtiff
-              ];
-            };
+            djvu2pdf = djvu2pdf;
+            default = self.packages.${system}.djvu2pdf;
           };
 
           devShell = pkgs.mkShell {
             buildInputs = [
               self.packages.${system}.djvu2pdf
 
-              pdfbeads
               ruby
               ruby.gems.nokogiri
               pkgs.jbig2enc

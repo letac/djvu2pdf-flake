@@ -7,12 +7,15 @@ It has hOCR (for keeping the text searchable).
 
 
 # Usage
+To enable hOCR, download the code and
 ```
 cd djvu2pdf-flake
 nix develop
 djvu2pdf yours.djvu new.pdf
 exit
 ```
+
+It is possible to run `nix run github:letac/djvu2pdf-flake#djvu2pdf in.djvu out.pdf`, but the resulting PDF will not have searchable text (hOCR support is missing).
 
 # Tried on
 

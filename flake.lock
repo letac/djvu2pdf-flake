@@ -3,11 +3,11 @@
     "djvu2pdf-git": {
       "flake": false,
       "locked": {
-        "lastModified": 1727530094,
-        "narHash": "sha256-HmaogYV8Lvxe4tzZldu1lJFwO97/OsZZxT0hfRYbqvM=",
+        "lastModified": 1757097580,
+        "narHash": "sha256-GhV+4y+b2eJ4SogtJ1YjC5Nsa7mO/c57gz7qaQGZF7g=",
         "owner": "letac",
         "repo": "djvu2pdf",
-        "rev": "2995a0949bc68604e944b700ff854fad1b5749b4",
+        "rev": "34a511ac415f91349921a49e87e45803b9690b29",
         "type": "github"
       },
       "original": {

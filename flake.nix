@@ -58,12 +58,8 @@
               pkgs.djvulibre
               pkgs.libtiff
               pdfbeads
-              #pdfbeads.wrappedRuby
-              #  ruby
             ];
-            checkPhase = [ ];
             text = text;
-            meta = { platforms = pkgs.lib.platforms.linux; };
           };
         in
         {

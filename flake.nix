@@ -46,7 +46,6 @@
               license = pkgs.lib.licenses.mit;
             };
           });
-          ruby = pkgs.ruby_3_1;
           text = builtins.readFile "${djvu2pdf-git}/djvu2pdf";
           djvu2pdf = pkgs.writeShellApplication {
             name = "djvu2pdf";
@@ -59,9 +58,10 @@
               pkgs.libtiff
               pdfbeads
             ];
+            
             text = text;
           };
-        in
+      in
         {
           formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
           packages = {
@@ -70,12 +70,8 @@
           };
 
           devShell = pkgs.mkShell {
-            buildInputs = [
+            packages = [
               self.packages.${system}.djvu2pdf
-
-              ruby
-              ruby.gems.nokogiri
-              pkgs.jbig2enc
             ];
           };
         }

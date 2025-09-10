@@ -30,8 +30,12 @@ GEM
       bigdecimal (~> 3.1)
 
 PLATFORMS
-  ruby
-  unknown
+  aarch64-linux
+  arm-linux
+  arm64-darwin
+  x86-linux
+  x86_64-darwin
+  x86_64-linux
 
 DEPENDENCIES
   pdfbeads

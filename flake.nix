@@ -22,7 +22,7 @@
 
           ocrodjvu = pkgs.callPackage ./pkgs/ocrodjvu.nix { inherit pkgs python-djvulibre; };
 
-          python3 = pkgs.python3; 
+          python3 = pkgs.python3;
 
           pdfbeads = pkgs.callPackage ./pkgs/pdfbears.nix { inherit pkgs; };
 
@@ -58,10 +58,10 @@
               pkgs.libtiff
               pdfbeads
             ];
-            
+
             text = text;
           };
-      in
+        in
         {
           formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
           packages = {

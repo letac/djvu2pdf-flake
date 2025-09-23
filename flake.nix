@@ -18,14 +18,22 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
 
-          python-djvulibre = pkgs.callPackage ./pkgs/python-djvulibre.nix { inherit pkgs; };
-
-          ocrodjvu = pkgs.callPackage ./pkgs/ocrodjvu.nix { inherit pkgs python-djvulibre; };
+          ocrodjvu =
+            let
+              buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
+              python-djvulibre = pkgs.callPackage ./pkgs/python-djvulibre.nix {
+                inherit buildPythonPackage;
+                cython = pkgs.python3Packages.cython;
+              };
+            in
+            pkgs.callPackage ./pkgs/ocrodjvu.nix {
+              inherit buildPythonPackage python-djvulibre;
+              lxml = pkgs.python3Packages.lxml;
+            };
 
           python3 = pkgs.python3;
 
-          pdfbeads = pkgs.callPackage ./pkgs/pdfbears.nix { inherit pkgs; };
-
+          pdfbeads = pkgs.callPackage ./pkgs/pdfbears.nix { ruby = pkgs.ruby_3_1; };
 
           djvu2pdf-toc-parser = pkgs.stdenv.mkDerivation (finalAttrs: {
             pname = "djvu2pdf-toc-parser";

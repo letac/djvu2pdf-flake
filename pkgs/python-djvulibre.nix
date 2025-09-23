@@ -1,23 +1,29 @@
-{ pkgs }:
-pkgs.python3Packages.buildPythonPackage rec {
+{ lib
+, buildPythonPackage
+, fetchFromGitHub
+, pkg-config
+, cython
+, djvulibre
+}:
+buildPythonPackage rec {
   name = "python-djvulibre";
   version = "0.9.1";
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "FriedrichFroebel";
     repo = "python-djvulibre";
     tag = version;
     hash = "sha256-5jOJyVPGJvR4YgxgJgyN47/OzsK3ASJXfn1Gt9y8rbs=";
   };
   nativeBuildInputs = [
-    pkgs.pkg-config
-    pkgs.python3Packages.cython
+    pkg-config
+    cython
   ];
   propagatedBuildInputs = [
-    pkgs.djvulibre
+    djvulibre
   ];
   meta = {
     description = "python-djvulibre is a set of Python bindings for the DjVuLibre library, an open source implementation of DjVu.";
     homepage = "https://github.com/FriedrichFroebel/python-djvulibre";
-    license = pkgs.lib.licenses.gpl2;
+    license = lib.licenses.gpl2;
   };
 }

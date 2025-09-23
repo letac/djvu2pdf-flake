@@ -1,20 +1,18 @@
-{ pkgs }:
+{ lib, ruby, bundlerEnv, writeShellApplication, jbig2enc }:
 let
-  lib = pkgs.lib;
-  ruby = pkgs.ruby_3_1;
-  gems = pkgs.bundlerEnv {
+  gems = bundlerEnv {
     name = "pdfbeads-gems";
     inherit ruby;
     gemdir = ./gems;
   };
 in
 
-pkgs.writeShellApplication {
+writeShellApplication {
   name = "pdfbeads";
   runtimeInputs = [
     ruby
     gems
-    pkgs.jbig2enc
+    jbig2enc
   ];
   text = ''
     #!/usr/bin/env bash

@@ -7,7 +7,14 @@ It has hOCR (for keeping the text searchable).
 
 
 # Usage
-Use `nix run github:letac/djvu2pdf-flake#djvu2pdf in.djvu out.pdf` or just `nix run github:letac/djvu2pdf-flake# in.djvu out.pdf`
+Use 
+```
+nix run github:letac/djvu2pdf-flake#djvu2pdf in.djvu out.pdf
+```
+or just 
+```
+nix run github:letac/djvu2pdf-flake# in.djvu out.pdf
+```
 
 # Tried on
 

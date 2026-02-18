@@ -27,10 +27,6 @@
         pkgs = nixpkgs.legacyPackages.${system};
         pkgsold = nixpkgsold.legacyPackages.${system};
 
-        ocrodjvu = pkgs.ocrodjvu;
-
-        python3 = pkgs.python3;
-
         pdfbeads = pkgsold.callPackage ./pkgs/pdfbears.nix { ruby = pkgsold.ruby_3_1; };
 
         djvu2pdf-toc-parser = pkgs.stdenv.mkDerivation (finalAttrs: {
@@ -57,8 +53,8 @@
           name = "djvu2pdf";
           runtimeInputs = [
             djvu2pdf-toc-parser
-            python3
-            ocrodjvu
+            pkgs.python3
+            pkgs.ocrodjvu
 
             pkgs.djvulibre
             pkgs.libtiff
